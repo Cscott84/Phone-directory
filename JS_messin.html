@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta chartset="UTF-8">
+	<title> JS Messing</title>
+	<style>
+	
+	.container
+	{
+		width:40%;
+		margin: 5% auto;
+	}
+	
+	
+	
+	
+	</style>
+	<script>
+	
+	
+	
+	var nameStore = [];
+	var numStore = [];
+	
+	function phone()
+	{
+		var name = document.frm1.txt1.value;
+		var num = document.frm1.txt2.value;
+		
+		nameStore.push(name);
+		numStore.push(num);	
+	}
+	
+	
+	function search()
+	{
+		var display = document.getElementById("display");
+		var search = document.frm2.txt3.value;
+		
+		search = search.toLowerCase();
+		
+		for(var i = 0; i < nameStore.length; i++)
+		{
+			if(search == nameStore[i])
+			{
+				display.innerHTML = search +"\'s " + "telphone number is: " + numStore[i];
+				
+				break;
+			}
+			
+			if(search!= nameStore[i])
+			{
+				display.innerHTML = search + " is not in the current directory. Please search a valid name in the directory ";		
+			}
+	
+		}	
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+
+
+
+</head>
+
+<body>
+ <div class="container">	
+	<h2> Phone Directory</h2>
+	
+<form id="frm1" name="frm1">
+	<p>Please Enter your first name here:</p>
+	<input type="text" name="txt1">
+	<p>Please Enter your Phone Number</p>
+	<input type="text" name="txt2">
+	<br><br>
+	<input type="button" name="btn1" value="Submit Information" onClick="phone();">
+	
+	<input type="reset" value="Add a new number">
+</form>
+
+<br>
+<br>
+
+	<h2>Search for a phone number</h2>
+<form id="frm2" name="frm2">
+
+	<p>Please enter the name of the person you would like to receive their phone number</p>
+	<input type="text" name="txt3">
+	<br>
+	<br>
+	<input type="button" name="btn2" value="search" onClick="search();">
+	<br>
+	<br>	
+
+</form>
+<div id="display">
+</div>	
+
+</div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
