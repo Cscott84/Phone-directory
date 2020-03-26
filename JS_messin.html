@@ -19,10 +19,17 @@
 	<script>
 	
 	
+	window.onload = function()
+	{
+		document.getElementById("btn1").onclick=phone;
+		document.getElementById("btn2").onclick=search;
+	}
+	
 	
 	var nameStore = [];
 	var numStore = [];
 	
+	// push data into the arrays
 	function phone()
 	{
 		var name = document.frm1.txt1.value;
@@ -30,9 +37,18 @@
 		
 		nameStore.push(name);
 		numStore.push(num);	
+		
+		var txt1 = document.getElementById("txt1");
+		var txt2 = document.getElementById("txt2");
+		
+		txt1.value="";
+		txt2.value="";
+		
+		
+
 	}
 	
-	
+	// function to search arrays
 	function search()
 	{
 		var display = document.getElementById("display");
@@ -65,6 +81,7 @@
 	
 	
 	
+	
 </script>
 
 
@@ -77,13 +94,13 @@
 	
 <form id="frm1" name="frm1">
 	<p>Please Enter your first name here:</p>
-	<input type="text" name="txt1">
+	<input type="text" id="txt1"name="txt1">
 	<p>Please Enter your Phone Number</p>
-	<input type="text" name="txt2">
+	<input type="text" id="txt2" name="txt2">
 	<br><br>
-	<input type="button" name="btn1" value="Submit Information" onClick="phone();">
+	<input type="button" id="btn1" value="Submit Information">
 	
-	<input type="reset" value="Add a new number">
+	
 </form>
 
 <br>
@@ -96,7 +113,7 @@
 	<input type="text" name="txt3">
 	<br>
 	<br>
-	<input type="button" name="btn2" value="search" onClick="search();">
+	<input type="button" id="btn2" value="search">
 	<br>
 	<br>	
 
