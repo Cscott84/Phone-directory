@@ -4,18 +4,21 @@
 <head>
 	<meta chartset="UTF-8">
 	<title> JS Messing</title>
-	<style>
-	
-	.container
-	{
-		width:40%;
-		margin: 5% auto;
-	}
 	
 	
 	
 	
-	</style>
+	<!--Bootstrap-->
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	
+	
+
 	<script>
 	
 	
@@ -25,26 +28,33 @@
 		document.getElementById("btn2").onclick=search;
 	}
 	
+	//global arrays to store data
 	
-	var nameStore = [];
+	var fnameStore = [];
+	var lnameStore =[];
 	var numStore = [];
+		
 	
 	// push data into the arrays
 	function phone()
 	{
-		var name = document.frm1.txt1.value;
-		var num = document.frm1.txt2.value;
+		var lname = document.getElementById("txt").value;
+		var fname = document.getElementById("txt1").value;
+		var num = document.getElementById("txt2").value;
 		
-		nameStore.push(name);
+		lnameStore.push(lname);
+		fnameStore.push(fname);
 		numStore.push(num);	
 		
+		var txt = document.getElementById("txt");
 		var txt1 = document.getElementById("txt1");
 		var txt2 = document.getElementById("txt2");
-		
+	
+		txt.value="";
 		txt1.value="";
 		txt2.value="";
 		
-		
+	
 
 	}
 	
@@ -52,25 +62,45 @@
 	function search()
 	{
 		var display = document.getElementById("display");
-		var search = document.frm2.txt3.value;
+		var search = document.getElementById("txt3").value;
 		
 		search = search.toLowerCase();
 		
-		for(var i = 0; i < nameStore.length; i++)
-		{
-			if(search == nameStore[i])
-			{
-				display.innerHTML = search +"\'s " + "telphone number is: " + numStore[i];
+				var body = document.getElementById("body");
+				var dis = document.createElement("div");
+				var table = "<table class='table table-bordered table-striped'>";
+				table += "<tr><th>Last Name</th><th>First Name</th><th>Phone Number</th><tr>";
 				
-				break;
-			}
+		
+		for(var i = 0; i < lnameStore.length; i++)
+		{
+				
+			if(search == lnameStore[i])
 			
-			if(search!= nameStore[i])
+			{
+				
+				
+				
+				table += "<tr><td>" + lnameStore[i] +"</td>"
+				table += "<td>" + fnameStore[i] + "</td>"
+				table += "<td>" + numStore[i] + "</td></tr>";
+				
+			}
+			 
+			
+			 if(search != lnameStore[i])
 			{
 				display.innerHTML = search + " is not in the current directory. Please search a valid name in the directory ";		
 			}
-	
+			
+			
+			
 		}	
+		
+			table+="</table>";
+			
+			dis.innerHTML= table;
+			body.appendChild(dis);
 	
 	}
 	
@@ -88,15 +118,17 @@
 
 </head>
 
-<body>
+<body id="body">
  <div class="container">	
 	<h2> Phone Directory</h2>
 	
 <form id="frm1" name="frm1">
-	<p>Please Enter your first name here:</p>
-	<input type="text" id="txt1"name="txt1">
+	<p>Please Enter Last Name here:</p>
+	<input type="text" id="txt">
+	<p>Please Enter first name here:</p>
+	<input type="text" id="txt1">
 	<p>Please Enter your Phone Number</p>
-	<input type="text" id="txt2" name="txt2">
+	<input type="text" id="txt2">
 	<br><br>
 	<input type="button" id="btn1" value="Submit Information">
 	
@@ -109,8 +141,8 @@
 	<h2>Search for a phone number</h2>
 <form id="frm2" name="frm2">
 
-	<p>Please enter the name of the person you would like to receive their phone number</p>
-	<input type="text" name="txt3">
+	<p>Please enter the  last name of the person you would like to receive their phone number</p>
+	<input type="text" id="txt3">
 	<br>
 	<br>
 	<input type="button" id="btn2" value="search">
